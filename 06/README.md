@@ -1,4 +1,4 @@
-# Chapter 5: Troubleshooting
+# Chapter 6: Troubleshooting
 Try if you can get the exercises done. You can find more information in the `sources` directory.
 
 ## Exercise 1:

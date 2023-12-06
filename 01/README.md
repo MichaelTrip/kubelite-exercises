@@ -32,7 +32,7 @@ New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
 Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
 ```
 
-2. Add `minikube.exe` to your `%PATH%`
+2. Add `minikube.exe` to your `%PATH%`. Run this is as an Administrator:
 
 ```
 $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
@@ -40,6 +40,16 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
   [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
 }
 ```
+
+Close your shell and reopen it 
+Set your default driver for minikube:
+For Hyper-V:
+
+`minikube config set driver hyperv`
+
+For Docker:
+
+`minikube config set driver docker`
 
 3. Start your cluster
 
@@ -67,3 +77,14 @@ minikube dashboard
 ```
 kubectl get pods -A
 ```
+
+7. Add auto completion to your Powershell $PROFILE
+
+It is possible to add auto completion for kubectl to your Powershell Profile:
+
+
+```
+kubectl completion powershell >> $PROFILE
+```
+
+After that, restart your terminal.
