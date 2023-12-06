@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hello-from-pod
+  name: hello-from-pod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-from-pod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-from-pod
+    spec:
+      containers:
+      - image: ghcr.io/michaeltrip/hello-from-pod:latest
+        name: hello-from-pod
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
