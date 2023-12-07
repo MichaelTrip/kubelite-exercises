@@ -19,6 +19,7 @@ spec:
     spec:
       containers:
       - image: ghcr.io/michaeltrip/hello-from-pod:latest
+        imagePullPolicy: Always
         name: hello-from-pod
         ports:
         - containerPort: 8080
